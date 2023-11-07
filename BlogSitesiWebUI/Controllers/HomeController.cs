@@ -19,7 +19,6 @@ namespace BlogSitesiWebUI.Controllers
         public async Task<IActionResult> Index()
         {
             var posts = await postService.GetAllPostsAsync();
-
             return View(posts);
         }
 
