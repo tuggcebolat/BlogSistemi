@@ -15,5 +15,7 @@ namespace BlogSistemi.Entities.Entities
         [Display(Name = "Kategori")]
         public virtual Category? Category { get; set; }
         public DateTime CreateDate { get; set; }
+        public Guid UserId { get; set; }
+        public AppUser User { get; set; }
     }
 }

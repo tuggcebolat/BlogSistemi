@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BlogSistemi.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class mig1 : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -201,11 +201,18 @@ namespace BlogSistemi.Data.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Posts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Posts_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Posts_Categories_CategoryId",
                         column: x => x.CategoryId,
@@ -219,9 +226,9 @@ namespace BlogSistemi.Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { new Guid("5004f758-c9ca-4bc0-ba63-3d18bcfcbb94"), "8a916bf8-c69f-450d-a1d2-2ea49984b361", "Superadmin", "SUPERADMIN" },
-                    { new Guid("8ab669aa-3af6-4dde-ab97-167927acc2f5"), "08ca5555-52b4-408d-8884-19c367925098", "Admin", "ADMIN" },
-                    { new Guid("8f784524-6733-4239-8d80-d549b986110c"), "9f8f5271-c7a6-4ab1-8717-c9cf35f99e04", "User", "USER" }
+                    { new Guid("5004f758-c9ca-4bc0-ba63-3d18bcfcbb94"), "17f45cfa-9f58-48ce-8fd1-430c04cc9124", "Superadmin", "SUPERADMIN" },
+                    { new Guid("8ab669aa-3af6-4dde-ab97-167927acc2f5"), "be401220-43a5-4681-8167-621b1df982d8", "Admin", "ADMIN" },
+                    { new Guid("8f784524-6733-4239-8d80-d549b986110c"), "69e501d1-7733-4e5b-8492-1e99cdc7bd6b", "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
@@ -229,8 +236,8 @@ namespace BlogSistemi.Data.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { new Guid("2d6d0e61-c1bf-4878-acf0-a33e6bc3ccf0"), 0, "e83acf4b-0f7f-4edc-8842-6bcb756fae75", "superadmingmail.com", true, "Attila", "İlhan", false, null, "SUPERADMIN@GMAİL.COM", "SUPERADMIN@GMAİL.COM", "AQAAAAIAAYagAAAAECwvgoepeZ7Kl7jcsP8X9/LPfPxx+rRJhPc9+UwmDF0RP1TRdPkacghGcyHtNaONWg==", "+900538029812", true, "576ae301-28f7-489c-be1f-9c0750c09861", false, "superadmin@gmail.com" },
-                    { new Guid("61cdcc92-e5e1-4da9-8e36-0af0950472dd"), 0, "405522fd-80f2-493e-abd0-69460e1b82a5", "admingmail.com", false, "Admin", "User", false, null, "ADMIN@GMAİL.COM", "ADMIN@GMAİL.COM", "AQAAAAIAAYagAAAAEGTfqEwFH4bXdtlXBnKUlZJRt64glRjnVAtuSp5kdSThwEsNWvSs3Pv11yxJZYiobA==", "+900538029812", false, "d5bc4829-c91c-4d73-8f19-d7021b5ea706", false, "admin@gmail.com" }
+                    { new Guid("2d6d0e61-c1bf-4878-acf0-a33e6bc3ccf0"), 0, "bb0bcc04-7d28-4a0d-9ba5-a2c79fc8e603", "superadmingmail.com", true, "Attila", "İlhan", false, null, "SUPERADMIN@GMAİL.COM", "SUPERADMIN@GMAİL.COM", "AQAAAAIAAYagAAAAEFoYUC3nuksQYTqtKGClzLzjgNbMigBsFDgGeq4qni4DGeuhT6ZI4IaTQrZzqYmMqQ==", "+900538029812", true, "0ceb0fd5-689a-4369-97e5-115aef16f23c", false, "superadmin@gmail.com" },
+                    { new Guid("61cdcc92-e5e1-4da9-8e36-0af0950472dd"), 0, "1e71d77c-79a7-40dc-89fd-c62b14ee5b7d", "admingmail.com", false, "Admin", "User", false, null, "ADMIN@GMAİL.COM", "ADMIN@GMAİL.COM", "AQAAAAIAAYagAAAAEAbH5WzK5ZY1Okw7m1gG9hx8XEv2Mj1x6aE4K5o7hI7wVDki/VSd1Ak4v5eR39rvEw==", "+900538029812", false, "37d140e3-71e7-4cfd-88a6-7b0849d1845f", false, "admin@gmail.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -238,8 +245,8 @@ namespace BlogSistemi.Data.Migrations
                 columns: new[] { "Id", "CreateDate", "Description", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("87607752-bd4f-498c-9c1c-efc5573d120d"), new DateTime(2023, 11, 7, 20, 34, 35, 735, DateTimeKind.Local).AddTicks(2970), null, "Asp.Net Core" },
-                    { new Guid("fca52c48-c773-4f61-b892-0673234348dd"), new DateTime(2023, 11, 7, 20, 34, 35, 735, DateTimeKind.Local).AddTicks(2983), null, "Net Core" }
+                    { new Guid("87607752-bd4f-498c-9c1c-efc5573d120d"), new DateTime(2023, 11, 8, 12, 43, 27, 605, DateTimeKind.Local).AddTicks(8819), null, "Asp.Net Core" },
+                    { new Guid("fca52c48-c773-4f61-b892-0673234348dd"), new DateTime(2023, 11, 8, 12, 43, 27, 605, DateTimeKind.Local).AddTicks(8830), null, "Net Core" }
                 });
 
             migrationBuilder.InsertData(
@@ -253,11 +260,11 @@ namespace BlogSistemi.Data.Migrations
 
             migrationBuilder.InsertData(
                 table: "Posts",
-                columns: new[] { "Id", "CategoryId", "CreateDate", "Description", "Image", "Name" },
+                columns: new[] { "Id", "CategoryId", "CreateDate", "Description", "Image", "Name", "UserId" },
                 values: new object[,]
                 {
-                    { new Guid("05f9fe80-f1a1-409b-8eae-306f79d8ffe0"), new Guid("fca52c48-c773-4f61-b892-0673234348dd"), new DateTime(2023, 11, 7, 20, 34, 35, 735, DateTimeKind.Local).AddTicks(3909), "lorem ipsum dolor sit amet", "", "MVC PROJE 2" },
-                    { new Guid("db2aba27-a854-4ddc-ae3a-63df75be8727"), new Guid("87607752-bd4f-498c-9c1c-efc5573d120d"), new DateTime(2023, 11, 7, 20, 34, 35, 735, DateTimeKind.Local).AddTicks(3905), "lorem ipsum dolor sit amet", "", "MVC PROJE 1" }
+                    { new Guid("946bdee4-50ff-4574-bde9-734a1d4a8e91"), new Guid("87607752-bd4f-498c-9c1c-efc5573d120d"), new DateTime(2023, 11, 8, 12, 43, 27, 605, DateTimeKind.Local).AddTicks(9801), "lorem ipsum dolor sit amet", "", "MVC PROJE 1", new Guid("2d6d0e61-c1bf-4878-acf0-a33e6bc3ccf0") },
+                    { new Guid("f35377a3-db0f-424f-8102-8fcf511f620a"), new Guid("fca52c48-c773-4f61-b892-0673234348dd"), new DateTime(2023, 11, 8, 12, 43, 27, 605, DateTimeKind.Local).AddTicks(9815), "lorem ipsum dolor sit amet", "", "MVC PROJE 2", new Guid("61cdcc92-e5e1-4da9-8e36-0af0950472dd") }
                 });
 
             migrationBuilder.CreateIndex(
@@ -303,6 +310,11 @@ namespace BlogSistemi.Data.Migrations
                 name: "IX_Posts_CategoryId",
                 table: "Posts",
                 column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Posts_UserId",
+                table: "Posts",
+                column: "UserId");
         }
 
         /// <inheritdoc />

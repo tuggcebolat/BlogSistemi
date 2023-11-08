@@ -53,21 +53,21 @@ namespace BlogSistemi.Data.Migrations
                         new
                         {
                             Id = new Guid("5004f758-c9ca-4bc0-ba63-3d18bcfcbb94"),
-                            ConcurrencyStamp = "8a916bf8-c69f-450d-a1d2-2ea49984b361",
+                            ConcurrencyStamp = "17f45cfa-9f58-48ce-8fd1-430c04cc9124",
                             Name = "Superadmin",
                             NormalizedName = "SUPERADMIN"
                         },
                         new
                         {
                             Id = new Guid("8ab669aa-3af6-4dde-ab97-167927acc2f5"),
-                            ConcurrencyStamp = "08ca5555-52b4-408d-8884-19c367925098",
+                            ConcurrencyStamp = "be401220-43a5-4681-8167-621b1df982d8",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = new Guid("8f784524-6733-4239-8d80-d549b986110c"),
-                            ConcurrencyStamp = "9f8f5271-c7a6-4ab1-8717-c9cf35f99e04",
+                            ConcurrencyStamp = "69e501d1-7733-4e5b-8492-1e99cdc7bd6b",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -175,7 +175,7 @@ namespace BlogSistemi.Data.Migrations
                         {
                             Id = new Guid("2d6d0e61-c1bf-4878-acf0-a33e6bc3ccf0"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e83acf4b-0f7f-4edc-8842-6bcb756fae75",
+                            ConcurrencyStamp = "bb0bcc04-7d28-4a0d-9ba5-a2c79fc8e603",
                             Email = "superadmingmail.com",
                             EmailConfirmed = true,
                             FirstName = "Attila",
@@ -183,10 +183,10 @@ namespace BlogSistemi.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "SUPERADMIN@GMAİL.COM",
                             NormalizedUserName = "SUPERADMIN@GMAİL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAECwvgoepeZ7Kl7jcsP8X9/LPfPxx+rRJhPc9+UwmDF0RP1TRdPkacghGcyHtNaONWg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFoYUC3nuksQYTqtKGClzLzjgNbMigBsFDgGeq4qni4DGeuhT6ZI4IaTQrZzqYmMqQ==",
                             PhoneNumber = "+900538029812",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "576ae301-28f7-489c-be1f-9c0750c09861",
+                            SecurityStamp = "0ceb0fd5-689a-4369-97e5-115aef16f23c",
                             TwoFactorEnabled = false,
                             UserName = "superadmin@gmail.com"
                         },
@@ -194,7 +194,7 @@ namespace BlogSistemi.Data.Migrations
                         {
                             Id = new Guid("61cdcc92-e5e1-4da9-8e36-0af0950472dd"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "405522fd-80f2-493e-abd0-69460e1b82a5",
+                            ConcurrencyStamp = "1e71d77c-79a7-40dc-89fd-c62b14ee5b7d",
                             Email = "admingmail.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
@@ -202,10 +202,10 @@ namespace BlogSistemi.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAİL.COM",
                             NormalizedUserName = "ADMIN@GMAİL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEGTfqEwFH4bXdtlXBnKUlZJRt64glRjnVAtuSp5kdSThwEsNWvSs3Pv11yxJZYiobA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAbH5WzK5ZY1Okw7m1gG9hx8XEv2Mj1x6aE4K5o7hI7wVDki/VSd1Ak4v5eR39rvEw==",
                             PhoneNumber = "+900538029812",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d5bc4829-c91c-4d73-8f19-d7021b5ea706",
+                            SecurityStamp = "37d140e3-71e7-4cfd-88a6-7b0849d1845f",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });
@@ -331,13 +331,13 @@ namespace BlogSistemi.Data.Migrations
                         new
                         {
                             Id = new Guid("87607752-bd4f-498c-9c1c-efc5573d120d"),
-                            CreateDate = new DateTime(2023, 11, 7, 20, 34, 35, 735, DateTimeKind.Local).AddTicks(2970),
+                            CreateDate = new DateTime(2023, 11, 8, 12, 43, 27, 605, DateTimeKind.Local).AddTicks(8819),
                             Name = "Asp.Net Core"
                         },
                         new
                         {
                             Id = new Guid("fca52c48-c773-4f61-b892-0673234348dd"),
-                            CreateDate = new DateTime(2023, 11, 7, 20, 34, 35, 735, DateTimeKind.Local).AddTicks(2983),
+                            CreateDate = new DateTime(2023, 11, 8, 12, 43, 27, 605, DateTimeKind.Local).AddTicks(8830),
                             Name = "Net Core"
                         });
                 });
@@ -365,30 +365,37 @@ namespace BlogSistemi.Data.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Posts");
 
                     b.HasData(
                         new
                         {
-                            Id = new Guid("db2aba27-a854-4ddc-ae3a-63df75be8727"),
+                            Id = new Guid("946bdee4-50ff-4574-bde9-734a1d4a8e91"),
                             CategoryId = new Guid("87607752-bd4f-498c-9c1c-efc5573d120d"),
-                            CreateDate = new DateTime(2023, 11, 7, 20, 34, 35, 735, DateTimeKind.Local).AddTicks(3905),
+                            CreateDate = new DateTime(2023, 11, 8, 12, 43, 27, 605, DateTimeKind.Local).AddTicks(9801),
                             Description = "lorem ipsum dolor sit amet",
                             Image = "",
-                            Name = "MVC PROJE 1"
+                            Name = "MVC PROJE 1",
+                            UserId = new Guid("2d6d0e61-c1bf-4878-acf0-a33e6bc3ccf0")
                         },
                         new
                         {
-                            Id = new Guid("05f9fe80-f1a1-409b-8eae-306f79d8ffe0"),
+                            Id = new Guid("f35377a3-db0f-424f-8102-8fcf511f620a"),
                             CategoryId = new Guid("fca52c48-c773-4f61-b892-0673234348dd"),
-                            CreateDate = new DateTime(2023, 11, 7, 20, 34, 35, 735, DateTimeKind.Local).AddTicks(3909),
+                            CreateDate = new DateTime(2023, 11, 8, 12, 43, 27, 605, DateTimeKind.Local).AddTicks(9815),
                             Description = "lorem ipsum dolor sit amet",
                             Image = "",
-                            Name = "MVC PROJE 2"
+                            Name = "MVC PROJE 2",
+                            UserId = new Guid("61cdcc92-e5e1-4da9-8e36-0af0950472dd")
                         });
                 });
 
@@ -491,7 +498,20 @@ namespace BlogSistemi.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("BlogSistemi.Entities.Entities.AppUser", "User")
+                        .WithMany("Posts")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Category");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("BlogSistemi.Entities.Entities.AppUser", b =>
+                {
+                    b.Navigation("Posts");
                 });
 
             modelBuilder.Entity("BlogSistemi.Entities.Entities.Category", b =>

@@ -20,8 +20,8 @@ namespace BlogSistemi.Data.Mappings
                 Description = "lorem ipsum dolor sit amet",
                 Image = "",
                 CreateDate = DateTime.Now,
-                CategoryId = Guid.Parse("87607752-BD4F-498C-9C1C-EFC5573D120D")
-
+                CategoryId = Guid.Parse("87607752-BD4F-498C-9C1C-EFC5573D120D"),
+                UserId = Guid.Parse("2D6D0E61-C1BF-4878-ACF0-A33E6BC3CCF0"),
             },
             new Post
             {
@@ -31,7 +31,8 @@ namespace BlogSistemi.Data.Mappings
                 Image = "",
                 CreateDate = DateTime.Now,
 
-                CategoryId = Guid.Parse("FCA52C48-C773-4F61-B892-0673234348DD")
+                CategoryId = Guid.Parse("FCA52C48-C773-4F61-B892-0673234348DD"),
+                UserId= Guid.Parse("61CDCC92-E5E1-4DA9-8E36-0AF0950472DD"),
 
 
             }); ;
