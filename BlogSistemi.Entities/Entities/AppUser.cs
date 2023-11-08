@@ -12,5 +12,6 @@ namespace BlogSistemi.Entities.Entities
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+         public ICollection<Post>Posts { get; set; }
     }
 }
